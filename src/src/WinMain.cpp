@@ -8,7 +8,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCm
 	CPaintManagerUI::SetInstance(hInstance);
 
 	//窗体阴影初始化
-	CWndShadow::Initialize(hInstance);
+	//CWndShadow::Initialize(hInstance);
 
 	// 第二步：初始化COM库, 为加载COM库提供支持
 	HRESULT Hr = ::CoInitialize(NULL);
