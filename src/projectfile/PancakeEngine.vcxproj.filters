@@ -2,15 +2,30 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\src\WinMain.cpp" />
+    <ClCompile Include="..\src\EngineUI\MainWindow.cpp">
+      <Filter>EngineUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineUtils\PancakeEnginePathUtils.cpp">
+      <Filter>EngineUtils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Utils">
+    <Filter Include="EngineUI">
+      <UniqueIdentifier>{ae63592b-9794-443f-a388-648106bba317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineUtils">
       <UniqueIdentifier>{0a3e8a1c-5499-437f-acbf-9ff6651fbf02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\Utils\PancakeEngineProjectHeader.h">
-      <Filter>Utils</Filter>
+    <ClInclude Include="..\src\EngineUI\MainWindow.h">
+      <Filter>EngineUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineUtils\PancakeEnginePathUtils.h">
+      <Filter>EngineUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineUtils\PancakeEngineProjectHeader.h">
+      <Filter>EngineUtils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

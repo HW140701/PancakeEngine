@@ -13,6 +13,7 @@
 #include "UIlib.h"
 using namespace DuiLib;
 
-
+// 自定义工具类
+#include "EngineUtils/PancakeEnginePathUtils.h"
 
 #endif // !PANCAKE_ENGINE_PROJECT_HEADER_
