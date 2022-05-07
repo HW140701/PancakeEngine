@@ -17,6 +17,7 @@ public:
 	virtual void InitWindow();                                                                          // 窗口初始化函数
 	virtual LRESULT OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);					// 窗口关闭函数
 	virtual LRESULT OnSysCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	virtual LRESULT HandleCustomMessage(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 
 private:
 	void InitControl();
@@ -27,6 +28,10 @@ private:
 	CButtonUI* m_pMaxBtn;
 	CButtonUI* m_pCloseBtn;
 	CButtonUI* m_pRestoreBtn;
+	CButtonUI* m_pFileBtn;
+
+	CMenuWnd* m_pFileMenu;
+	CStdStringPtrMap m_MenuInfos;
 };
 
 #endif // !MAIN_WINDOW_H_

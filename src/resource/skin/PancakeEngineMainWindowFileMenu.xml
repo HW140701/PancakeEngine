@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window  showshadow="true" >
+<Font name="微软雅黑" size="12" bold="false" default="true" />
+<Font shared="true" id="30" name="微软雅黑" size="12" bold="true"/>
+
+<!-- Menu样式 -->
+<Default name="Menu" shared="true" value="width=&quot;10&quot; bkcolor=&quot;0xFFE4E4E4&quot; itemfont=&quot;30&quot; inset=&quot;2,2,2,2&quot; itemselectedtextcolor=&quot;0xFF000000&quot; itemselectedbkcolor=&quot;0xFFFFFFFF&quot;" />
+
+<!-- ExplandIcon样式 -->
+<!-- <Default name="ExplandIcon" shared="true" value="menu/menu_expand.png" /> -->
+
+<Menu>
+    <MenuElement name="openfile" text="打开文件" resourcetext="true"/>
+</Menu>
+
+</Window>
