@@ -165,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\EngineUI\MainWindow.h" />
+    <ClInclude Include="..\src\EngineUI\UIControlName.h" />
     <ClInclude Include="..\src\EngineUtils\PancakeEnginePathUtils.h" />
     <ClInclude Include="..\src\EngineUtils\PancakeEngineProjectHeader.h" />
   </ItemGroup>

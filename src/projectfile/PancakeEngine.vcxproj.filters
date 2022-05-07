@@ -27,5 +27,8 @@
     <ClInclude Include="..\src\EngineUtils\PancakeEngineProjectHeader.h">
       <Filter>EngineUtils</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\EngineUI\UIControlName.h">
+      <Filter>EngineUI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
