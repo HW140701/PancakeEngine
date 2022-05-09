@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <Window size="920,580" roundcorner="0,0" sizebox="6,6,6,6" caption="0,0,0,90" mininfo="920,580" showshadow="true" shadowsize="5" shadowposition="1,1" shadowcolor="#333333" >
-    <VerticalLayout bkcolor="0xFFFFFFFF">
+    <Font id="0" name="微软雅黑" size="12" bold="false" italic="false"/>
+	<VerticalLayout bkcolor="0xFFFFFFFF">
         <!-- 标题栏 -->
         <HorizontalLayout height="32" bkcolor="0xFFE4E4E4">
             <HorizontalLayout height="32">
-                <Button name="MainWindow_File_Btn" width="50" height="32" text="文件" padding="0,0,0,0" align="center" hotbkcolor="0xFFFFFFFF" tooltip="文件" />
+                <Button name="MainWindow_File_Btn" width="50" height="24" text="文件" font="0" padding="5,4,0,0" align="center" hotbkcolor="0xFFFFFFFF" tooltip="文件" />
             </HorizontalLayout>
             <Control />
             <HorizontalLayout width="70">

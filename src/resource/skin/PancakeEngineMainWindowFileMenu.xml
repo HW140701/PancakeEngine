@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Window  showshadow="true" >
+<Window showshadow="true" >
 <Font name="微软雅黑" size="12" bold="false" default="true" />
-<Font shared="true" id="30" name="微软雅黑" size="12" bold="true"/>
+<Font shared="true" id="30" name="微软雅黑" size="12" bold="false"/>
 
 <!-- Menu样式 -->
-<Default name="Menu" shared="true" value="width=&quot;10&quot; bkcolor=&quot;0xFFE4E4E4&quot; itemfont=&quot;30&quot; inset=&quot;2,2,2,2&quot; itemselectedtextcolor=&quot;0xFF000000&quot; itemselectedbkcolor=&quot;0xFFFFFFFF&quot;" />
+<Default name="Menu" shared="true" value="width=&quot;150&quot; bkcolor=&quot;0xFFE4E4E4&quot; inset=&quot;1,1,1,1&quot; itemfont=&quot;30&quot; itemalign=&quot;left&quot; itemtextpadding=&quot;5,0,0,0&quot; itemselectedtextcolor=&quot;0xFF000000&quot; itemselectedbkcolor=&quot;0xFFFFFFFF&quot;" />
 
 <!-- ExplandIcon样式 -->
 <!-- <Default name="ExplandIcon" shared="true" value="menu/menu_expand.png" /> -->

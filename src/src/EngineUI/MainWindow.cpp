@@ -166,6 +166,8 @@ void MainWindow::ProcessClickMessage(TNotifyUI& msg)
 			m_pFileMenu = nullptr;
 		}
 
+		//CMenuWnd::GetGlobalContextMenuObserver().SetMenuCheckInfo(&m_MenuInfos);
+
 		m_pFileMenu = new CMenuWnd();
 		//CDuiPoint point;
 		//::GetCursorPos(&point);
@@ -182,6 +184,6 @@ void MainWindow::ProcessClickMessage(TNotifyUI& msg)
 		CDuiPoint point(fileBtnClientPoint.x, fileBtnClientPoint.y);
 		m_pFileMenu->Init(NULL, _T("PancakeEngineMainWindowFileMenu.xml"), point, &m_PaintManager);
 
-		m_pFileMenu->ResizeMenu();
+		//m_pFileMenu->ResizeMenu();
 	}
 }
