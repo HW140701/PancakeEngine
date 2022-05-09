@@ -1,6 +1,23 @@
 #include "EngineUtils/PancakeEngineProjectHeader.h"
 #include "EngineUI/MainWindow.h"
 
+INITIALIZE_EASYLOGGINGPP
+
+void InitEasyLoggintPP()
+{
+	el::Configurations defaultConf;
+	defaultConf.setToDefault();
+	//设置最大文件大小
+	defaultConf.setGlobally(el::ConfigurationType::MaxLogFileSize, "104857600");
+	//是否写入文件
+	defaultConf.setGlobally(el::ConfigurationType::ToFile, "true");
+	//是否输出控制台
+	defaultConf.setGlobally(el::ConfigurationType::ToStandardOutput, "true");
+
+	defaultConf.setGlobally(el::ConfigurationType::Format, "[%datetime]  [%function]   [%loc]   [%level] : %msg");
+	//设置配置文件
+	el::Loggers::reconfigureLogger("default", defaultConf);
+}
 
 int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
 {
@@ -22,6 +39,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCm
 	mainWindow.Create(NULL, _T("PancakeEngine"), UI_WNDSTYLE_FRAME, WS_EX_WINDOWEDGE);
 	mainWindow.CenterWindow();
 	::ShowWindow(mainWindow, SW_SHOW);
+	LOG(INFO) << "MainWindow初始化成功";
 
 	// 第六步：处理消息循环
 	CPaintManagerUI::MessageLoop();

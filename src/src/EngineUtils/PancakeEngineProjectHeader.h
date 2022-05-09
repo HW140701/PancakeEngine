@@ -13,6 +13,10 @@
 #include "UIlib.h"
 using namespace DuiLib;
 
+// easylogging++
+#include "easylogging++.h"
+#define ELPP_THREAD_SAFE
+
 // 自定义工具类
 #include "EngineUtils/PancakeEnginePathUtils.h"
 #include "EngineUI/UIControlName.h"

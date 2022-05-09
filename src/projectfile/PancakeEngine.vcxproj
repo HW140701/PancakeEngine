@@ -96,7 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_AFXDLL;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.././src;.././third/Duilib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/Duilib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_AFXDLL;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.././src;.././third/Duilib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/Duilib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_AFXDLL;_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -147,7 +147,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_AFXDLL;_CRT_SECURE_NO_WARNINGS;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,6 +162,7 @@
     <ClCompile Include="..\src\EngineUI\MainWindow.cpp" />
     <ClCompile Include="..\src\EngineUtils\PancakeEnginePathUtils.cpp" />
     <ClCompile Include="..\src\WinMain.cpp" />
+    <ClCompile Include="..\third\easylogging++\9.97.0\src\easylogging++.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\EngineUI\MainWindow.h" />
