@@ -166,6 +166,7 @@
     <ClCompile Include="..\src\WinMain.cpp" />
     <ClCompile Include="..\third\easylogging++\9.97.0\src\easylogging++.cc" />
     <ClCompile Include="..\third\glad\src\glad.c" />
+    <ClCompile Include="..\third\glad\src\glad_wgl.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.h" />

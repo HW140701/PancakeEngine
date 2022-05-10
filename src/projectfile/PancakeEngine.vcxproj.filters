@@ -20,6 +20,9 @@
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.cpp">
       <Filter>EngineGraphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\third\glad\src\glad_wgl.c">
+      <Filter>ThirdParty\glad</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="EngineUI">

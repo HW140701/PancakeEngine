@@ -176,6 +176,21 @@ void PancakeEngineOpenGLRenderWindow::OnSize(HWND hWnd, WPARAM wParam, LPARAM lP
 
 bool PancakeEngineOpenGLRenderWindow::InitOpenGLContext(HWND hWnd)
 {
+	float fPixAttribs[] = { 0, 0 };
+	int iPixAttribs[] = { WGL_SUPPORT_OPENGL_ARB, GL_TRUE, // Must support OGL rendering
+		WGL_DRAW_TO_WINDOW_ARB, GL_TRUE, // pf that can run a window 
+		WGL_ACCELERATION_ARB,
+		WGL_FULL_ACCELERATION_ARB, // must be HW accelerated
+		WGL_COLOR_BITS_ARB, 32, // 8 bits of each R, G and B
+		WGL_DEPTH_BITS_ARB, 24, // 24 bits of depth precision for window
+		WGL_DOUBLE_BUFFER_ARB, GL_TRUE, // Double buffered context
+		WGL_PIXEL_TYPE_ARB, WGL_TYPE_RGBA_ARB, // pf should be RGBA type
+		WGL_STENCIL_BITS_ARB, 8,//开启模板缓冲区,模板缓冲区位数=8
+		WGL_SAMPLE_BUFFERS_ARB, GL_TRUE, // MSAA on,开启多重采样
+		WGL_SAMPLES_ARB, 8, // 4x MSAA ,多重采样样本数量为4
+		0 }; // NULL termination
+
+
 	m_HDC = GetDC(hWnd);
 
 	PIXELFORMATDESCRIPTOR pfd = {

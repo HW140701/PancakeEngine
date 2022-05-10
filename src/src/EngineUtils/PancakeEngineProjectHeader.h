@@ -19,6 +19,7 @@ using namespace DuiLib;
 
 // glad
 #include "glad/glad.h"
+#include "glad/glad_wgl.h"
 
 // 自定义工具类
 #include "EngineUI/UIControlName.h"
