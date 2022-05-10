@@ -39,5 +39,8 @@
     <ClInclude Include="..\src\EngineUI\UIControlName.h">
       <Filter>EngineUI</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\EngineUI\CWndUI.h">
+      <Filter>EngineUI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

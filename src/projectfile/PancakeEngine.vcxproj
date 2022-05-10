@@ -165,6 +165,7 @@
     <ClCompile Include="..\third\easylogging++\9.97.0\src\easylogging++.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\EngineUI\CWndUI.h" />
     <ClInclude Include="..\src\EngineUI\MainWindow.h" />
     <ClInclude Include="..\src\EngineUI\UIControlName.h" />
     <ClInclude Include="..\src\EngineUtils\PancakeEnginePathUtils.h" />

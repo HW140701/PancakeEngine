@@ -3,6 +3,7 @@
 
 #include "EngineUtils/PancakeEngineProjectHeader.h"
 
+
 class MainWindow : public WindowImplBase
 {
 public:
@@ -18,12 +19,17 @@ public:
 	virtual LRESULT OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);					// 窗口关闭函数
 	virtual LRESULT OnSysCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	virtual LRESULT HandleCustomMessage(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	virtual CControlUI* CreateControl(LPCTSTR pstrClass);											    // 根据xml创建相关控件
+
 
 private:
 	void InitControl();
 	void ProcessClickMessage(TNotifyUI& msg);
+	bool OnTargetOpenGLWindowSizeChanged(void* param);													// 视频窗口大小改变和绘制事件触发函数
 
 private:
+	CHorizontalLayoutUI* m_pOpenGLWindowHorizontalLayout;
+
 	CButtonUI* m_pMinBtn;
 	CButtonUI* m_pMaxBtn;
 	CButtonUI* m_pCloseBtn;
@@ -32,6 +38,9 @@ private:
 
 	CMenuWnd* m_pFileMenu;
 	CStdStringPtrMap m_MenuInfos;
+
+	CWndUI* m_pOpenGLWindow;
+	HWND m_OpenGLWindowHWND;
 };
 
 #endif // !MAIN_WINDOW_H_

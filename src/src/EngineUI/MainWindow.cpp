@@ -9,6 +9,8 @@ MainWindow::MainWindow()
 	m_pFileBtn = nullptr;
 
 	m_pFileMenu = nullptr;
+
+	m_pOpenGLWindow = nullptr;
 }
 
 MainWindow::~MainWindow()
@@ -129,9 +131,30 @@ LRESULT MainWindow::HandleCustomMessage(UINT uMsg, WPARAM wParam, LPARAM lParam,
 
 }
 
+CControlUI* MainWindow::CreateControl(LPCTSTR pstrClass)
+{
+	if (_tcsicmp(pstrClass, WndUI_Name) == 0)
+	{
+		if (m_pOpenGLWindow == nullptr)
+		{
+			m_pOpenGLWindow = new CWndUI();
+			m_OpenGLWindowHWND = CreateWindow(_T("OpenGLWnd"), _T("win32"), WS_VISIBLE | WS_CHILD | WS_CLIPSIBLINGS, 0, 0, 0, 0, m_PaintManager.GetPaintWindow(), NULL, NULL, NULL);
+			m_pOpenGLWindow->Attach(m_OpenGLWindowHWND);
+			m_pOpenGLWindow->OnSize += MakeDelegate(this, &MainWindow::OnTargetOpenGLWindowSizeChanged);
+
+			return m_pOpenGLWindow;
+		}
+	}
+
+
+	return nullptr;
+}
+
 
 void MainWindow::InitControl()
 {
+	m_pOpenGLWindowHorizontalLayout = static_cast<CHorizontalLayoutUI*>(m_PaintManager.FindControl(MainWindow_OpenGLWindow_HorizontalLayout_Name));
+
 	m_pMinBtn = static_cast<CButtonUI*>(m_PaintManager.FindControl(MainWindow_Min_Btn_Name));
 	m_pMaxBtn = static_cast<CButtonUI*>(m_PaintManager.FindControl(MainWindow_Max_Btn_Name));
 	m_pRestoreBtn = static_cast<CButtonUI*>(m_PaintManager.FindControl(MainWindow_Restore_Btn_Name));
@@ -186,4 +209,29 @@ void MainWindow::ProcessClickMessage(TNotifyUI& msg)
 
 		//m_pFileMenu->ResizeMenu();
 	}
+}
+
+bool MainWindow::OnTargetOpenGLWindowSizeChanged(void* param)
+{
+	if (!m_pOpenGLWindowHorizontalLayout)
+	{
+		return false;
+	}
+
+	const RECT& rc_pos = m_pOpenGLWindowHorizontalLayout->GetPos();
+
+	CWndUI* pWndUI = static_cast<CWndUI*>(m_PaintManager.FindControl(MainWindow_OpenGLWnd_Wnd_Name));
+	if (!pWndUI)
+		return false;
+
+	// 得到OpenGL窗口的宽高
+	int openGLWndWidth = rc_pos.right - rc_pos.left;
+	int openGLWndHeight = rc_pos.bottom - rc_pos.top;
+
+	if (openGLWndWidth >= 0 && openGLWndHeight >= 0)
+	{
+		::MoveWindow(pWndUI->GetHWND(), rc_pos.left, rc_pos.top, openGLWndWidth, openGLWndHeight, TRUE);
+	}
+
+	return true;
 }
