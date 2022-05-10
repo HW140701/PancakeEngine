@@ -18,8 +18,11 @@ using namespace DuiLib;
 #define ELPP_THREAD_SAFE
 
 // 自定义工具类
-#include "EngineUtils/PancakeEnginePathUtils.h"
 #include "EngineUI/UIControlName.h"
 #include "EngineUI/CWndUI.h"
+
+#include "EngineUtils/PancakeEnginePathUtils.h"
+#include "EngineUtils/WndProcRemapUtil.h"
+#include "EngineUtils/Singleton.h"
 
 #endif // !PANCAKE_ENGINE_PROJECT_HEADER_

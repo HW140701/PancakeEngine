@@ -11,6 +11,9 @@
     <ClCompile Include="..\third\easylogging++\9.97.0\src\easylogging++.cc">
       <Filter>ThirdParty\easylogging++</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.cpp">
+      <Filter>EngineGraphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="EngineUI">
@@ -24,6 +27,9 @@
     </Filter>
     <Filter Include="ThirdParty\easylogging++">
       <UniqueIdentifier>{283fe2fe-310c-4c9a-a259-539403e2defb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineGraphics">
+      <UniqueIdentifier>{ea98663c-4c9b-44a4-a669-80c1f9ee2084}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +47,15 @@
     </ClInclude>
     <ClInclude Include="..\src\EngineUI\CWndUI.h">
       <Filter>EngineUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineUtils\WndProcRemapUtil.h">
+      <Filter>EngineUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.h">
+      <Filter>EngineGraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineUtils\Singleton.h">
+      <Filter>EngineUtils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

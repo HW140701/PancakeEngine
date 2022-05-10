@@ -138,7 +138,7 @@ CControlUI* MainWindow::CreateControl(LPCTSTR pstrClass)
 		if (m_pOpenGLWindow == nullptr)
 		{
 			m_pOpenGLWindow = new CWndUI();
-			m_OpenGLWindowHWND = CreateWindow(_T("OpenGLWnd"), _T("win32"), WS_VISIBLE | WS_CHILD | WS_CLIPSIBLINGS, 0, 0, 0, 0, m_PaintManager.GetPaintWindow(), NULL, NULL, NULL);
+			m_OpenGLWindowHWND = CreateWindow(_T("OpenGLWindow"), _T("win32"), WS_VISIBLE | WS_CHILD | WS_CLIPSIBLINGS, 0, 0, 0, 0, m_PaintManager.GetPaintWindow(), NULL, NULL, NULL);
 			m_pOpenGLWindow->Attach(m_OpenGLWindowHWND);
 			m_pOpenGLWindow->OnSize += MakeDelegate(this, &MainWindow::OnTargetOpenGLWindowSizeChanged);
 

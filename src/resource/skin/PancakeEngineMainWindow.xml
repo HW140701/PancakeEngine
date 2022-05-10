@@ -3,9 +3,9 @@
     <Font id="0" name="微软雅黑" size="12" bold="false" italic="false" remark="菜单的文字格式"/>
 
 
-	<VerticalLayout bkcolor="0xFFFFFFFF">
+	<VerticalLayout bkcolor="0xFFFFFFFF" >
         <!-- 标题栏 -->
-        <HorizontalLayout height="32" bkcolor="0xFFE4E4E4">
+        <HorizontalLayout height="32" bkcolor="0xFFE4E4E4" >
             <HorizontalLayout height="32">
                 <Button name="MainWindow_File_Btn" width="50" height="24" text="文件" font="0" padding="5,4,0,0" align="center" hotbkcolor="0xFFFFFFFF" tooltip="文件" />
             </HorizontalLayout>

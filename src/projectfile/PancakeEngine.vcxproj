@@ -159,17 +159,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.cpp" />
     <ClCompile Include="..\src\EngineUI\MainWindow.cpp" />
     <ClCompile Include="..\src\EngineUtils\PancakeEnginePathUtils.cpp" />
     <ClCompile Include="..\src\WinMain.cpp" />
     <ClCompile Include="..\third\easylogging++\9.97.0\src\easylogging++.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.h" />
     <ClInclude Include="..\src\EngineUI\CWndUI.h" />
     <ClInclude Include="..\src\EngineUI\MainWindow.h" />
     <ClInclude Include="..\src\EngineUI\UIControlName.h" />
     <ClInclude Include="..\src\EngineUtils\PancakeEnginePathUtils.h" />
     <ClInclude Include="..\src\EngineUtils\PancakeEngineProjectHeader.h" />
+    <ClInclude Include="..\src\EngineUtils\Singleton.h" />
+    <ClInclude Include="..\src\EngineUtils\WndProcRemapUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
