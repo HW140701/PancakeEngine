@@ -96,13 +96,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_AFXDLL;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/Duilib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/glad/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.././third/Duilib/lib/$(Platform)/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Duilib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Duilib.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_AFXDLL;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/Duilib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/glad/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -121,7 +121,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.././third/Duilib/lib/$(Platform)/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Duilib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Duilib.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -130,13 +130,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_AFXDLL;_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/glad/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.././third/DuiLib_Ultimate/lib/$(Platform)/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Duilib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Duilib.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,7 +147,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_AFXDLL;_CRT_SECURE_NO_WARNINGS;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.././src;.././third/DuiLib_Ultimate/include;.././third/easylogging++/9.97.0/src;.././third/glad/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -155,17 +155,20 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.././third/DuiLib_Ultimate/lib/$(Platform)/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Duilib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Duilib.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.cpp" />
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.cpp" />
     <ClCompile Include="..\src\EngineUI\MainWindow.cpp" />
     <ClCompile Include="..\src\EngineUtils\PancakeEnginePathUtils.cpp" />
     <ClCompile Include="..\src\WinMain.cpp" />
     <ClCompile Include="..\third\easylogging++\9.97.0\src\easylogging++.cc" />
+    <ClCompile Include="..\third\glad\src\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.h" />
     <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.h" />
     <ClInclude Include="..\src\EngineUI\CWndUI.h" />
     <ClInclude Include="..\src\EngineUI\MainWindow.h" />

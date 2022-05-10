@@ -17,6 +17,9 @@ using namespace DuiLib;
 #include "easylogging++.h"
 #define ELPP_THREAD_SAFE
 
+// glad
+#include "glad/glad.h"
+
 // 自定义工具类
 #include "EngineUI/UIControlName.h"
 #include "EngineUI/CWndUI.h"

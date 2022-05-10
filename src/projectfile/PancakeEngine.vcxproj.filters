@@ -14,6 +14,12 @@
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.cpp">
       <Filter>EngineGraphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\third\glad\src\glad.c">
+      <Filter>ThirdParty\glad</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.cpp">
+      <Filter>EngineGraphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="EngineUI">
@@ -30,6 +36,9 @@
     </Filter>
     <Filter Include="EngineGraphics">
       <UniqueIdentifier>{ea98663c-4c9b-44a4-a669-80c1f9ee2084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\glad">
+      <UniqueIdentifier>{d008830f-66ac-4c6d-a73b-ecda75a6241f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +65,9 @@
     </ClInclude>
     <ClInclude Include="..\src\EngineUtils\Singleton.h">
       <Filter>EngineUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.h">
+      <Filter>EngineGraphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
