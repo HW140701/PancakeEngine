@@ -43,6 +43,9 @@
     <Filter Include="ThirdParty\glad">
       <UniqueIdentifier>{d008830f-66ac-4c6d-a73b-ecda75a6241f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EngineGraphics\Common">
+      <UniqueIdentifier>{15637489-d3df-4222-9042-9ec19341b00d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\EngineUI\MainWindow.h">

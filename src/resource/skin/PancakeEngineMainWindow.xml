@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <Window size="920,580" roundcorner="0,0" sizebox="6,6,6,6" caption="0,0,0,90" mininfo="920,580" showshadow="true" shadowsize="5" shadowposition="1,1" shadowcolor="#333333" >
+<!-- <Window size="920,580" roundcorner="0,0" sizebox="6,6,6,6" caption="0,0,0,90" mininfo="920,580" showshadow="true" shadowimage="shadow.png" shadowsize="25" shadowcorner="100,100,100,100"> -->
     <Font id="0" name="微软雅黑" size="12" bold="false" italic="false" remark="菜单的文字格式"/>
 
 

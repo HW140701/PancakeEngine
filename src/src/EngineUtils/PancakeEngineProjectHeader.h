@@ -21,7 +21,26 @@ using namespace DuiLib;
 #include "glad/glad.h"
 #include "glad/glad_wgl.h"
 
-// 自定义工具类
+// glm
+#define GLM_ENABLE_EXPERIMENTAL
+#include "glm/glm.hpp"
+#include "glm/ext.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/quaternion.hpp"
+#include "glm/gtx/string_cast.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "glm/gtx/matrix_decompose.hpp"
+#include "glm/gtx/euler_angles.hpp"
+
+
+/*----- std -----*/
+#include <string>
+#include <memory>
+#include <sstream>
+#include <vector>
+
+
+/*----- 自定义工具类 -----*/
 #include "EngineUI/UIControlName.h"
 #include "EngineUI/CWndUI.h"
 

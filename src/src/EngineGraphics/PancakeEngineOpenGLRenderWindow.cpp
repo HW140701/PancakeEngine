@@ -163,13 +163,13 @@ void PancakeEngineOpenGLRenderWindow::OnPaint(HWND hWnd, WPARAM wParam, LPARAM l
 	//DeleteObject(hRgn);
 
 	// 窗口绘制颜色
-	HDC hDC = ::GetDC(hWnd);
-	RECT clientRect = { 0 };
-	GetClientRect(hWnd, &clientRect);
-	HBRUSH hbr = ::CreateSolidBrush(RGB(0xFF, 0xFF, 0xFF)); // 白色画刷
-	::FillRect(hDC, &clientRect, hbr);
-	::DeleteObject(hbr);
-	::ReleaseDC(hWnd, hDC);
+	//HDC hDC = ::GetDC(hWnd);
+	//RECT clientRect = { 0 };
+	//GetClientRect(hWnd, &clientRect);
+	//HBRUSH hbr = ::CreateSolidBrush(RGB(0xFF, 0xFF, 0xFF)); // 白色画刷
+	//::FillRect(hDC, &clientRect, hbr);
+	//::DeleteObject(hbr);
+	//::ReleaseDC(hWnd, hDC);
 
 	// 更新OpenGL
 	UpdateOpenGLRender(hWnd);
