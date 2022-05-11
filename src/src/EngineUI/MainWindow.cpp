@@ -1,5 +1,7 @@
 #include "MainWindow.h"
 
+HWND MainWindow::m_MainWindowHWND = NULL;
+
 MainWindow::MainWindow()
 {
 	m_pMinBtn = nullptr;
@@ -133,6 +135,8 @@ LRESULT MainWindow::HandleCustomMessage(UINT uMsg, WPARAM wParam, LPARAM lParam,
 
 CControlUI* MainWindow::CreateControl(LPCTSTR pstrClass)
 {
+	m_MainWindowHWND = m_hWnd;
+
 	if (_tcsicmp(pstrClass, WndUI_Name) == 0)
 	{
 		if (m_pOpenGLWindow == nullptr)
@@ -148,6 +152,11 @@ CControlUI* MainWindow::CreateControl(LPCTSTR pstrClass)
 
 
 	return nullptr;
+}
+
+HWND MainWindow::GetMainWindowHWND()
+{
+	return m_MainWindowHWND;
 }
 
 

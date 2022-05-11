@@ -57,8 +57,12 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCm
 	CPaintManagerUI::SetInstance(hInstance);
 
 	// 注册OpenGL窗口回调函数
-	WNDPROC wndProc = MakeObjectInstance(PancakeEngineOpenGLRenderWindow::GetSingleton().get(), &PancakeEngineOpenGLRenderWindow::OpenGLWndDisplayProc);
-	MyRegisterOpenGLWnd((TCHAR*)("OpenGLWindow"), wndProc);
+	WNDPROC openGLWindowProc = MakeObjectInstance(PancakeEngineOpenGLRenderWindow::GetSingleton().get(), &PancakeEngineOpenGLRenderWindow::OpenGLWndDisplayProc);
+	WNDPROC tempOpenGLWindowProc = MakeObjectInstance(PancakeEngineOpenGLRenderWindow::GetSingleton().get(), &PancakeEngineOpenGLRenderWindow::TempOpenGLWindowProc);
+
+	MyRegisterOpenGLWnd((TCHAR*)("OpenGLWindow"), openGLWindowProc);
+	MyRegisterOpenGLWnd((TCHAR*)("TempOpenGLWindow"), tempOpenGLWindowProc);
+
 
 	// 第二步：初始化COM库, 为加载COM库提供支持
 	HRESULT Hr = ::CoInitialize(NULL);
@@ -81,7 +85,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCm
 	::CoUninitialize();
 
 	// 释放WndProc
-	FreeObjectInstance(wndProc);
+	FreeObjectInstance(openGLWindowProc);
+	FreeObjectInstance(tempOpenGLWindowProc);
 
 	return 0;
 }

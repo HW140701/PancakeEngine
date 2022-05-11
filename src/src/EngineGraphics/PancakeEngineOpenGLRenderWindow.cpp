@@ -1,4 +1,5 @@
 #include "PancakeEngineOpenGLRenderWindow.h"
+#include "EngineUI/MainWindow.h"
 
 PancakeEngineOpenGLRenderWindow::PancakeEngineOpenGLRenderWindow()
 	:m_pPancakeEngineOpenGLRender(nullptr)
@@ -122,17 +123,23 @@ LRESULT PancakeEngineOpenGLRenderWindow::OpenGLWndDisplayProc(HWND hWnd, UINT me
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
+LRESULT PancakeEngineOpenGLRenderWindow::TempOpenGLWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
 void PancakeEngineOpenGLRenderWindow::OnCreate(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
 	m_HWND = hWnd;
 
-	if (InitOpenGLContext(hWnd))
+	if (InitOpenGLContext(hWnd,true))
 	{
 		LOG(INFO) << "InitOpenGLContext Success!";
 	}
 	else
 	{
 		LOG(ERROR) << "InitOpenGLContext Failed!";
+		exit(1);
 	}
 
 	LOG(INFO) << "PancakeEngineOpenGLRenderWindow：WM_CREATE";
@@ -174,96 +181,245 @@ void PancakeEngineOpenGLRenderWindow::OnSize(HWND hWnd, WPARAM wParam, LPARAM lP
 {
 }
 
-bool PancakeEngineOpenGLRenderWindow::InitOpenGLContext(HWND hWnd)
+bool PancakeEngineOpenGLRenderWindow::InitOpenGLContext(HWND hWnd, bool isUseMsaa)
 {
-	float fPixAttribs[] = { 0, 0 };
-	int iPixAttribs[] = { WGL_SUPPORT_OPENGL_ARB, GL_TRUE, // Must support OGL rendering
-		WGL_DRAW_TO_WINDOW_ARB, GL_TRUE, // pf that can run a window 
-		WGL_ACCELERATION_ARB,
-		WGL_FULL_ACCELERATION_ARB, // must be HW accelerated
-		WGL_COLOR_BITS_ARB, 32, // 8 bits of each R, G and B
-		WGL_DEPTH_BITS_ARB, 24, // 24 bits of depth precision for window
-		WGL_DOUBLE_BUFFER_ARB, GL_TRUE, // Double buffered context
-		WGL_PIXEL_TYPE_ARB, WGL_TYPE_RGBA_ARB, // pf should be RGBA type
-		WGL_STENCIL_BITS_ARB, 8,//开启模板缓冲区,模板缓冲区位数=8
-		WGL_SAMPLE_BUFFERS_ARB, GL_TRUE, // MSAA on,开启多重采样
-		WGL_SAMPLES_ARB, 8, // 4x MSAA ,多重采样样本数量为4
-		0 }; // NULL termination
-
-
-	m_HDC = GetDC(hWnd);
-
-	PIXELFORMATDESCRIPTOR pfd = {
-	sizeof(PIXELFORMATDESCRIPTOR),  /* 上述描述符大小 */
-	1,                              /* 版本号 */
-	PFD_SUPPORT_OPENGL |
-	PFD_DRAW_TO_WINDOW |
-	PFD_DOUBLEBUFFER,               /* 双重采样 */
-	PFD_TYPE_RGBA,                  /* RGBA颜色格式 */
-	32,                             /* 颜色深度 */
-	0, 0, 0, 0, 0, 0,               /* color bits (ignored) */
-	8,                              /* no alpha buffer */
-	0,                              /* alpha bits (ignored) */
-	0,                              /* no accumulation buffer */
-	0, 0, 0, 0,                     /* accum bits (ignored) */
-	24,                             /* depth buffer */
-	8,                              /* no stencil buffer */
-	0,                              /* no auxiliary buffers */
-	PFD_MAIN_PLANE,                 /* main layer */
-	0,                              /* reserved */
-	0, 0, 0,                        /* no layer, visible, damage masks */
-	};
-
-	int pixelFormat = ChoosePixelFormat(m_HDC, &pfd);
-	if (pixelFormat == 0)
+	// 不开启MSAA
+	if (!isUseMsaa)
 	{
-		MessageBox(NULL, "ChoosePixelFormat failed.", NULL, NULL);
-		return false;
+		m_HDC = GetDC(hWnd);
+
+		PIXELFORMATDESCRIPTOR pfd = {
+		sizeof(PIXELFORMATDESCRIPTOR),  /* 上述描述符大小 */
+		1,                              /* 版本号 */
+		PFD_SUPPORT_OPENGL |
+		PFD_DRAW_TO_WINDOW |
+		PFD_DOUBLEBUFFER,               /* 双重采样 */
+		PFD_TYPE_RGBA,                  /* RGBA颜色格式 */
+		32,                             /* 颜色深度 */
+		0, 0, 0, 0, 0, 0,               /* color bits (ignored) */
+		8,                              /* no alpha buffer */
+		0,                              /* alpha bits (ignored) */
+		0,                              /* no accumulation buffer */
+		0, 0, 0, 0,                     /* accum bits (ignored) */
+		24,                             /* depth buffer */
+		8,                              /* no stencil buffer */
+		0,                              /* no auxiliary buffers */
+		PFD_MAIN_PLANE,                 /* main layer */
+		0,                              /* reserved */
+		0, 0, 0,                        /* no layer, visible, damage masks */
+		};
+
+		int pixelFormat = ChoosePixelFormat(m_HDC, &pfd);
+		if (pixelFormat == 0)
+		{
+			MessageBox(NULL, "ChoosePixelFormat failed.", NULL, NULL);
+			return false;
+		}
+
+		if (!SetPixelFormat(m_HDC, pixelFormat, &pfd))
+		{
+			MessageBox(NULL, "SetPixelFormat failed.", NULL, NULL);
+			return false;
+		}
+
+		DescribePixelFormat(m_HDC, pixelFormat, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
+		if (pfd.dwFlags & PFD_NEED_PALETTE)
+		{
+			MessageBox(NULL, "Palette pixel format not supported..", NULL, NULL);
+			return false;
+		}
+
+		m_HGLRC = wglCreateContext(m_HDC);
+		if (m_HGLRC == NULL)
+		{
+			MessageBox(NULL, "wglCreateContext failed!", NULL, NULL);
+			return false;
+		}
+
+		if (wglMakeCurrent(m_HDC, m_HGLRC) == false)
+		{
+			return false;
+		}
+
+		// 初始化glad
+		if (!gladLoadGL())
+		{
+			LOG(ERROR) << "Could not instantiate GLAD OpenGL 2.1 context";
+			return false;
+		}
+		else if (GLVersion.major < 2)
+		{
+			LOG(ERROR) << "Your system doesn't support OpenGL >= 2!";
+			return false;
+		}	
+	}
+	// 开启MSAA
+	else
+	{
+		/*----- 1 创建一个临时的窗口用于得到窗口上下文初始化wgl和glad -----*/
+		HWND tempWnd = CreateWindow(_T("TempOpenGLWindow"), _T("win32"), WS_VISIBLE | WS_CHILD | WS_CLIPSIBLINGS, 0, 0, 0, 0, MainWindow::GetMainWindowHWND(), NULL, NULL, NULL);
+		HDC tempHdc = GetDC(tempWnd);
+
+		if (tempHdc == NULL)
+			return false;
+
+		PIXELFORMATDESCRIPTOR pfd;
+
+		int pixelFormat = ChoosePixelFormat(tempHdc, &pfd);
+		if (pixelFormat == 0)
+		{
+			MessageBox(WindowFromDC(tempHdc), "ChoosePixelFormat failed.", NULL, NULL);
+			return false;
+		}
+
+		if (!SetPixelFormat(tempHdc, pixelFormat, &pfd))
+		{
+			MessageBox(WindowFromDC(tempHdc), "SetPixelFormat failed.", NULL, NULL);
+			return false;
+		}
+
+		DescribePixelFormat(tempHdc, pixelFormat, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
+		if (pfd.dwFlags & PFD_NEED_PALETTE)
+		{
+			MessageBox(NULL, "Palette pixel format not supported..", NULL, NULL);
+			exit(1);
+		}
+
+		HGLRC temphRC = wglCreateContext(tempHdc);
+		if (temphRC == NULL)
+		{
+			MessageBox(NULL, "wglCreateContext failed!", NULL, NULL);
+			return false;
+		}
+
+		if (wglMakeCurrent(tempHdc, temphRC) == false)
+		{
+			return false;
+		}
+
+		// 初始化glad WGL
+		if (!gladLoadWGL(tempHdc))
+		{
+			LOG(ERROR) << "Could not instantiate GLAD WGL";
+			return false;
+		}
+
+		// 初始化glad
+		if (!gladLoadGL())
+		{
+			LOG(ERROR) << "Could not instantiate GLAD OpenGL 2.1 context";
+			return false;
+		}
+		else if (GLVersion.major < 2)
+		{
+			LOG(ERROR) << "Your system doesn't support OpenGL >= 2!";
+			return false;
+		}
+
+		// glad初始化完成之后销毁临时窗口
+		wglMakeCurrent(NULL, NULL);
+		wglDeleteContext(temphRC);
+		DestroyWindow(tempWnd);
+
+		/*----- 2 为当前实际窗口设置多重采样像素格式 -----*/
+		float fPixAttribs[] = { 0, 0 };
+		int iPixAttribs[] = { WGL_SUPPORT_OPENGL_ARB, GL_TRUE, // Must support OGL rendering
+			WGL_DRAW_TO_WINDOW_ARB, GL_TRUE, // pf that can run a window 
+			WGL_ACCELERATION_ARB,
+			WGL_FULL_ACCELERATION_ARB, // must be HW accelerated
+			WGL_COLOR_BITS_ARB, 32, // 8 bits of each R, G and B
+			WGL_DEPTH_BITS_ARB, 24, // 24 bits of depth precision for window
+			WGL_DOUBLE_BUFFER_ARB, GL_TRUE, // Double buffered context
+			WGL_PIXEL_TYPE_ARB, WGL_TYPE_RGBA_ARB, // pf should be RGBA type
+			WGL_STENCIL_BITS_ARB, 8,//开启模板缓冲区,模板缓冲区位数=8
+			WGL_SAMPLE_BUFFERS_ARB, GL_TRUE, // MSAA on,开启多重采样
+			WGL_SAMPLES_ARB, 8, // 4x MSAA ,多重采样样本数量为4
+			0 }; // NULL termination
+
+		m_HDC = GetDC(hWnd);
+
+		//gladLoadWGL(m_HDC);
+
+		//if (!gladLoadWGL(m_HDC))
+		//{
+		//	LOG(ERROR) << "Could not instantiate GLAD WGL Extension";
+		//	return false;
+		//}
+
+		int nPixelFormat = -1;
+		int nPixCount = 0;
+
+		// 查询适合多重采样的像素格式
+		wglChoosePixelFormatARB(m_HDC, iPixAttribs, fPixAttribs, 1, &nPixelFormat, (UINT*)&nPixCount);
+
+		//多重采样时,如果硬件不支持就使用下面的代码关闭多重采样 
+		if (nPixelFormat == -1)
+		{
+			// 使用没有MSAA的像素格式
+			iPixAttribs[19] = 1;
+			wglChoosePixelFormatARB(m_HDC, iPixAttribs, fPixAttribs, 1, &nPixelFormat, (UINT*)&nPixCount);
+		}
+
+		PIXELFORMATDESCRIPTOR pfd_MSAA = {
+		sizeof(PIXELFORMATDESCRIPTOR),  /* 上述描述符大小 */
+		1,                              /* 版本号 */
+		PFD_SUPPORT_OPENGL |
+		PFD_DRAW_TO_WINDOW |
+		PFD_DOUBLEBUFFER,               /* 双重采样 */
+		PFD_TYPE_RGBA,                  /* RGBA颜色格式 */
+		32,                             /* 颜色深度 */
+		0, 0, 0, 0, 0, 0,               /* color bits (ignored) */
+		8,                              /* no alpha buffer */
+		0,                              /* alpha bits (ignored) */
+		0,                              /* no accumulation buffer */
+		0, 0, 0, 0,                     /* accum bits (ignored) */
+		24,                             /* depth buffer */
+		8,                              /* no stencil buffer */
+		0,                              /* no auxiliary buffers */
+		PFD_MAIN_PLANE,                 /* main layer */
+		0,                              /* reserved */
+		0, 0, 0,                        /* no layer, visible, damage masks */
+		};
+
+		if (!SetPixelFormat(m_HDC, nPixelFormat, &pfd_MSAA))
+		{
+			MessageBox(WindowFromDC(m_HDC), "SetPixelFormat failed.", NULL, NULL);
+			return false;
+		}
+
+		GLint attribs[] = { WGL_CONTEXT_MAJOR_VERSION_ARB, 4,//主版本4
+		WGL_CONTEXT_MINOR_VERSION_ARB, 6,//次版本号3
+		WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB,
+		0 };
+
+		m_HGLRC = wglCreateContextAttribsARB(m_HDC, 0, attribs);
+
+		if (m_HGLRC == NULL)
+		{
+			MessageBox(NULL, "!!! Could not create an OpenGL 4.3 context.\n", NULL, NULL);
+			attribs[1] = 1;
+			attribs[3] = 3;
+			m_HGLRC = wglCreateContextAttribsARB(m_HDC, 0, attribs);
+			if (m_HGLRC == NULL)
+			{
+				MessageBox(NULL, NULL, "!!! Could not create an OpenGL 1.3 context.\n", NULL);
+				return -1;
+			}
+		}
+
+		if (!wglMakeCurrent(m_HDC, m_HGLRC))
+			return false;
+
 	}
 
-	if (!SetPixelFormat(m_HDC, pixelFormat, &pfd))
-	{
-		MessageBox(NULL, "SetPixelFormat failed.", NULL, NULL);
-		return false;
-	}
-
-	DescribePixelFormat(m_HDC, pixelFormat, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
-	if (pfd.dwFlags & PFD_NEED_PALETTE)
-	{
-		MessageBox(NULL, "Palette pixel format not supported..", NULL, NULL);
-		return false;
-	}
-
-	m_HGLRC = wglCreateContext(m_HDC);
-	if (m_HGLRC == NULL)
-	{
-		MessageBox(NULL, "wglCreateContext failed!", NULL, NULL);
-		return false;
-	}
-
-	if (wglMakeCurrent(m_HDC, m_HGLRC) == false)
-	{
-		return false;
-	}
-
-	// 初始化glad
-	if (!gladLoadGL()) 
-	{
-		LOG(ERROR) << "Could not instantiate GLAD OpenGL 2.1 context";
-		return false;
-	}
-	else if (GLVersion.major < 2)
-	{
-		LOG(ERROR) << "Your system doesn't support OpenGL >= 2!";
-		return false;
-	}
+	SwapBuffers(m_HDC);
 
 	// 获取OpenGL相关信息
 	const GLubyte* vender_name = glGetString(GL_VENDOR); //返回负责当前OpenGL实现厂商的名字
 	const GLubyte* render_name = glGetString(GL_RENDERER); //返回一个渲染器标识符，通常是个硬件平台
 	const GLubyte* opengl_version_name = glGetString(GL_VERSION); //返回当前OpenGL实现的版本号
 	const GLubyte* glsl_version_name = glGetString(GL_SHADING_LANGUAGE_VERSION); // glsl版本
-	
+
 	LOG(INFO) << "OpenGL实现厂商的名字：" << vender_name;
 	LOG(INFO) << "渲染器标识符：" << render_name;
 	LOG(INFO) << "OpenGL实现的版本号：" << opengl_version_name;

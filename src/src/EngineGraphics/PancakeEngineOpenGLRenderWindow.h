@@ -14,6 +14,7 @@ public:
 
 public:
 	LRESULT CALLBACK OpenGLWndDisplayProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+	LRESULT CALLBACK TempOpenGLWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 private:
 	void OnCreate(HWND hWnd, WPARAM wParam, LPARAM lParam);
@@ -21,7 +22,7 @@ private:
 	void OnPaint(HWND hWnd, WPARAM wParam, LPARAM lParam);
 	void OnSize(HWND hWnd, WPARAM wParam, LPARAM lParam);
 
-	bool InitOpenGLContext(HWND hWnd);
+	bool InitOpenGLContext(HWND hWnd,bool isUseMsaa = true);
 	void UnInitOpenGLContext();
 	void UpdateOpenGLRender(HWND hWnd);
 
