@@ -20,11 +20,10 @@
         </HorizontalLayout>
 
         <!-- 业务区 -->
-        <HorizontalLayout>
+        <HorizontalLayout >
             <Control width="10" />
-            <VerticalLayout width="150">
-
-            </VerticalLayout>
+			<HorizontalLayout width="150" maxwidth="500" bkcolor="0xFFFF0000" sepwidth="5" sepimm="true">
+			</HorizontalLayout>
 
             <HorizontalLayout name="MainWindow_OpenGLWindow_HorizontalLayout">
                 <Wnd name="MainWindow_OpenGLWnd_Wnd" float="false" />
