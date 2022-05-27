@@ -159,8 +159,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Base\Shader.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Manager\ShaderManager.cpp" />
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\PancakeEngineScene.cpp" />
     <ClCompile Include="..\src\EngineUI\MainWindow.cpp" />
     <ClCompile Include="..\src\EngineUtils\PancakeEnginePathUtils.cpp" />
     <ClCompile Include="..\src\WinMain.cpp" />
@@ -169,8 +171,10 @@
     <ClCompile Include="..\third\glad\src\glad_wgl.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.h" />
+    <ClInclude Include="..\src\EngineGraphics\Base\Shader.h" />
+    <ClInclude Include="..\src\EngineGraphics\Manager\ShaderManager.h" />
     <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.h" />
+    <ClInclude Include="..\src\EngineGraphics\PancakeEngineScene.h" />
     <ClInclude Include="..\src\EngineUI\CWndUI.h" />
     <ClInclude Include="..\src\EngineUI\MainWindow.h" />
     <ClInclude Include="..\src\EngineUI\UIControlName.h" />

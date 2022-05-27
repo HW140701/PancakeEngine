@@ -17,11 +17,17 @@
     <ClCompile Include="..\third\glad\src\glad.c">
       <Filter>ThirdParty\glad</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.cpp">
-      <Filter>EngineGraphics</Filter>
-    </ClCompile>
     <ClCompile Include="..\third\glad\src\glad_wgl.c">
       <Filter>ThirdParty\glad</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\PancakeEngineScene.cpp">
+      <Filter>EngineGraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Base\Shader.cpp">
+      <Filter>EngineGraphics\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Manager\ShaderManager.cpp">
+      <Filter>EngineGraphics\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,8 +49,17 @@
     <Filter Include="ThirdParty\glad">
       <UniqueIdentifier>{d008830f-66ac-4c6d-a73b-ecda75a6241f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EngineGraphics\Base">
+      <UniqueIdentifier>{37c39b82-187f-44a4-b2cd-e776036194c6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="EngineGraphics\Common">
-      <UniqueIdentifier>{15637489-d3df-4222-9042-9ec19341b00d}</UniqueIdentifier>
+      <UniqueIdentifier>{c400a5cc-dc73-43e8-8fa4-0d06735adaa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineGraphics\Manager">
+      <UniqueIdentifier>{f4f677b9-63f6-4b21-8baf-0727e8400c6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineGraphics\Pipeline">
+      <UniqueIdentifier>{f5b26a41-2591-49e0-bc90-25228f213c6b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,8 +87,14 @@
     <ClInclude Include="..\src\EngineUtils\Singleton.h">
       <Filter>EngineUtils</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRender.h">
+    <ClInclude Include="..\src\EngineGraphics\PancakeEngineScene.h">
       <Filter>EngineGraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\Shader.h">
+      <Filter>EngineGraphics\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Manager\ShaderManager.h">
+      <Filter>EngineGraphics\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

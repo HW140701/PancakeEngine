@@ -2,10 +2,10 @@
 #include "EngineUI/MainWindow.h"
 
 PancakeEngineOpenGLRenderWindow::PancakeEngineOpenGLRenderWindow()
-	:m_pPancakeEngineOpenGLRender(nullptr)
+	:m_pPancakeEngineScene(nullptr)
 {
-	m_pPancakeEngineOpenGLRender = std::make_unique<PancakeEngineOpenGLRender>();
-	if (m_pPancakeEngineOpenGLRender == nullptr)
+	m_pPancakeEngineScene = std::make_unique<PancakeEngine::PancakeEngineScene>();
+	if (m_pPancakeEngineScene == nullptr)
 	{
 		LOG(ERROR) << "PancakeEngineOpenGLRender´´½¨Ê§°Ü" << std::endl;
 	}
@@ -442,13 +442,13 @@ void PancakeEngineOpenGLRenderWindow::UpdateOpenGLRender(HWND hWnd)
 
 	if (m_HGLRC)
 	{
-		if (m_pPancakeEngineOpenGLRender != nullptr)
+		if (m_pPancakeEngineScene != nullptr)
 		{
-			m_pPancakeEngineOpenGLRender->BeforeRender();
+			m_pPancakeEngineScene->BeforeRender();
 
-			m_pPancakeEngineOpenGLRender->Render();
+			m_pPancakeEngineScene->Render();
 
-			m_pPancakeEngineOpenGLRender->AfterRender();
+			m_pPancakeEngineScene->AfterRender();
 		}
 
 		SwapBuffers(hDC);

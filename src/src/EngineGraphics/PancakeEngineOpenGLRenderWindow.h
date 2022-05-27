@@ -1,8 +1,8 @@
-#ifndef PANCAKE_ENGINE_OPENGL_RENDER_WINDOW_H_
-#define PANCAKE_ENGINE_OPENGL_RENDER_WINDOW_H_
+#ifndef ENGINE_GRAPGICS_PANCAKE_ENGINE_OPENGL_RENDER_WINDOW_H_
+#define ENGINE_GRAPGICS_PANCAKE_ENGINE_OPENGL_RENDER_WINDOW_H_
 
 #include "EngineUtils/PancakeEngineProjectHeader.h"
-#include "PancakeEngineOpenGLRender.h"
+#include "PancakeEngineScene.h"
 
 class PancakeEngineOpenGLRenderWindow
 {
@@ -31,7 +31,7 @@ private:
 	HDC m_HDC;
 	HGLRC m_HGLRC;
 
-	std::unique_ptr<PancakeEngineOpenGLRender> m_pPancakeEngineOpenGLRender;
+	std::unique_ptr<PancakeEngine::PancakeEngineScene> m_pPancakeEngineScene;
 };
 
-#endif // !PANCAKE_ENGINE_OPENGL_RENDER_WINDOW_H_
+#endif // !ENGINE_GRAPGICS_PANCAKE_ENGINE_OPENGL_RENDER_WINDOW_H_
