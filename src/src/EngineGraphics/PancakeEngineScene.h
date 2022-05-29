@@ -2,6 +2,7 @@
 #define ENGINE_GRAPHICS_PANCAKE_ENGINE_SCENE_H_
 
 #include "EngineUtils/PancakeEngineProjectHeader.h"
+#include "EngineGraphics/Manager/ShaderManager.h"
 
 namespace PancakeEngine
 {
@@ -17,7 +18,7 @@ namespace PancakeEngine
 		void AfterRender();
 
 	private:
-
+		std::shared_ptr<ShaderManager> m_pShaderManager;
 	};
 }
 

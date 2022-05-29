@@ -29,6 +29,18 @@
     <ClCompile Include="..\src\EngineGraphics\Manager\ShaderManager.cpp">
       <Filter>EngineGraphics\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Base\Camera.cpp">
+      <Filter>EngineGraphics\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Manager\CameraManager.cpp">
+      <Filter>EngineGraphics\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Base\Object.cpp">
+      <Filter>EngineGraphics\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Manager\Manager.cpp">
+      <Filter>EngineGraphics\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="EngineUI">
@@ -94,6 +106,18 @@
       <Filter>EngineGraphics\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\EngineGraphics\Manager\ShaderManager.h">
+      <Filter>EngineGraphics\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera.h">
+      <Filter>EngineGraphics\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Manager\CameraManager.h">
+      <Filter>EngineGraphics\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\Object.h">
+      <Filter>EngineGraphics\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Manager\Manager.h">
       <Filter>EngineGraphics\Manager</Filter>
     </ClInclude>
   </ItemGroup>

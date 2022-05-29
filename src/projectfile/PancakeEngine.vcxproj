@@ -159,7 +159,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\EngineGraphics\Base\Camera.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Base\Object.cpp" />
     <ClCompile Include="..\src\EngineGraphics\Base\Shader.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Manager\CameraManager.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Manager\Manager.cpp" />
     <ClCompile Include="..\src\EngineGraphics\Manager\ShaderManager.cpp" />
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.cpp" />
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineScene.cpp" />
@@ -171,7 +175,11 @@
     <ClCompile Include="..\third\glad\src\glad_wgl.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera.h" />
+    <ClInclude Include="..\src\EngineGraphics\Base\Object.h" />
     <ClInclude Include="..\src\EngineGraphics\Base\Shader.h" />
+    <ClInclude Include="..\src\EngineGraphics\Manager\CameraManager.h" />
+    <ClInclude Include="..\src\EngineGraphics\Manager\Manager.h" />
     <ClInclude Include="..\src\EngineGraphics\Manager\ShaderManager.h" />
     <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.h" />
     <ClInclude Include="..\src\EngineGraphics\PancakeEngineScene.h" />
