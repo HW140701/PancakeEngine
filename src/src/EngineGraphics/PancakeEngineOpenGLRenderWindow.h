@@ -40,6 +40,10 @@ private:
 	HDC m_HDC;
 	HGLRC m_HGLRC;
 
+	bool m_bLeftButtonDown;
+	bool m_bMouseMoving;
+	int m_LastLeftButtonDownMouseXPos;
+	int m_LastLeftButtonDownMouseYPos;
 };
 
 #endif // !ENGINE_GRAPGICS_PANCAKE_ENGINE_OPENGL_RENDER_WINDOW_H_

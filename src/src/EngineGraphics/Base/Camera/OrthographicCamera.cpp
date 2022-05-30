@@ -26,6 +26,20 @@ namespace PancakeEngine
 	void OrthographicCamera::HandleKeyboardPress(CameraMovement direction)
 	{
 	}
+	void OrthographicCamera::SetCameraViewSize(int view_width, int view_height)
+	{
+		m_CameraViewWidth = view_width;
+		m_CameraViewHeight = view_height;
+
+		m_Left = 0.0f;
+		m_Right = view_width;
+
+		m_Bottom = 0.0f;
+		m_Top = view_height;
+
+		m_Near = 0.0f;
+		m_Far = 1000.0f;
+	}
 	glm::mat4 OrthographicCamera::GetProjectMatrix()
 	{
 		return m_ProjectMatrix;

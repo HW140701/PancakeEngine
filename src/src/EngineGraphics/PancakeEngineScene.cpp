@@ -37,10 +37,28 @@ namespace PancakeEngine
 	void PancakeEngineScene::Resize(int width, int height)
 	{
 		glViewport(0, 0, width, height);
+		m_SceneWidth = width;
+		m_SceneHeight = height;
+
+		if (m_pCameraManager != nullptr)
+		{
+			if (m_pCameraManager->GetMainCamera() != nullptr && width > 0 && height > 0)
+			{
+				m_pCameraManager->GetMainCamera()->SetCameraViewSize(width, height);
+			}
+		}
+	}
+	std::shared_ptr<CameraManager> PancakeEngineScene::GetCameraManager()
+	{
+		return m_pCameraManager;
 	}
 	void PancakeEngineScene::InitScene()
 	{
+		// 创建各种管理器
 		CreateManager();
+
+		// 创建相机
+		CreateCamera();
 	}
 	void PancakeEngineScene::UnInitScene()
 	{
@@ -53,5 +71,26 @@ namespace PancakeEngine
 		}
 
 
+		if (m_pCameraManager == nullptr)
+		{
+			m_pCameraManager = std::make_shared<CameraManager>();
+		}
+
+	}
+	bool PancakeEngineScene::CreateCamera()
+	{
+		if (m_pCameraManager == nullptr)
+		{
+			return false;
+		}
+
+		glm::vec3 camera_position = glm::vec3(0.0, 0.0, 0.0);
+
+		m_pCameraManager->CreateMainPerspectiveCamera(camera_position);
+
+		if (m_pCameraManager->GetMainCamera() == nullptr)
+			return false;
+
+		return true;
 	}
 }

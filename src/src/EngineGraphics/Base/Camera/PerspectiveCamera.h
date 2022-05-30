@@ -10,6 +10,9 @@ namespace PancakeEngine
 	{
 	public:
 		PerspectiveCamera();
+
+		PerspectiveCamera(const glm::vec3& camera_position);
+
 		PerspectiveCamera(
 			const glm::vec3& camera_position,
 			const glm::vec3 world_up,
@@ -29,11 +32,13 @@ namespace PancakeEngine
 		virtual~ PerspectiveCamera();
 
 	public:
+		virtual void SetCameraViewSize(int view_width, int view_height);
+		virtual glm::mat4 GetProjectMatrix();
+		virtual glm::mat4 GetViewMatrix();
+
 		virtual void HandleMouseMovement(float delta_x, float delta_y);
 		virtual void HandleMouseScroll(float delta);
 		virtual void HandleKeyboardPress(CameraMovement direction);
-		virtual glm::mat4 GetProjectMatrix();
-		virtual glm::mat4 GetViewMatrix();
 
 		void SetPerspective(float fov_angle, float aspect, float near_plane, float far_plane);
 

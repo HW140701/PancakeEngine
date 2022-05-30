@@ -2,6 +2,8 @@
 #include "EngineUI/MainWindow.h"
 
 PancakeEngineOpenGLRenderWindow::PancakeEngineOpenGLRenderWindow()
+	:m_bLeftButtonDown(false),
+	m_bMouseMoving(false)
 {
 
 }
@@ -190,6 +192,7 @@ void PancakeEngineOpenGLRenderWindow::OnLeftButtonDown(HWND hWnd, WPARAM wParam,
 	int mouse_x = LOWORD(lParam);
 	int mouse_y = HIWORD(lParam);
 
+	m_bLeftButtonDown = true;
 }
 
 
@@ -198,12 +201,33 @@ void PancakeEngineOpenGLRenderWindow::OnLeftButtonUp(HWND hWnd, WPARAM wParam, L
 	int mouse_x = LOWORD(lParam);
 	int mouse_y = HIWORD(lParam);
 
+	m_bLeftButtonDown = false;
 }
 
 void PancakeEngineOpenGLRenderWindow::OnMouseMove(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
 	int mouse_x = LOWORD(lParam);
 	int mouse_y = HIWORD(lParam);
+
+	m_bMouseMoving = true;
+
+	if (m_bLeftButtonDown && m_bMouseMoving)
+	{
+		int x_delta = mouse_x - m_LastLeftButtonDownMouseXPos;
+		int y_delta = mouse_y - m_LastLeftButtonDownMouseYPos;
+
+		if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager() != nullptr)
+		{
+			if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera() != nullptr)
+			{
+				PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera()->HandleMouseMovement(x_delta, y_delta);
+			}
+		}
+	}
+
+	m_bMouseMoving = false;
+	m_LastLeftButtonDownMouseXPos = mouse_x;
+	m_LastLeftButtonDownMouseYPos = mouse_y;
 }
 
 void PancakeEngineOpenGLRenderWindow::OnRightButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam)
@@ -232,13 +256,85 @@ void PancakeEngineOpenGLRenderWindow::OnMouseWheel(HWND hWnd, WPARAM wParam, LPA
 	//> 0时 滚轮滚动方向向自己
 	//< 0时 滚轮滚动方向向屏幕
 
-	short wheelDistance = (short)HIWORD(wParam);
+	short wheel_distance = (short)HIWORD(wParam);
 
-
+	if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager() != nullptr)
+	{
+		if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera() != nullptr)
+		{
+			PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera()->HandleMouseScroll(wheel_distance);
+		}
+	}
 }
 
 void PancakeEngineOpenGLRenderWindow::OnKeyDown(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
+	// W键
+	if (wParam == 0x57)
+	{
+		if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager() != nullptr)
+		{
+			if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera() != nullptr)
+			{
+				PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera()->HandleKeyboardPress(CameraMovement::Forward);
+			}
+		}
+	}
+	// A键
+	else if (wParam == 0x41)
+	{
+		if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager() != nullptr)
+		{
+			if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera() != nullptr)
+			{
+				PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera()->HandleKeyboardPress(CameraMovement::Left);
+			}
+		}
+	}
+	// S键
+	else if (wParam == 0x53)
+	{
+		if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager() != nullptr)
+		{
+			if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera() != nullptr)
+			{
+				PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera()->HandleKeyboardPress(CameraMovement::Backward);
+			}
+		}
+	}
+	// D键
+	else if (wParam == 0x44)
+	{
+		if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager() != nullptr)
+		{
+			if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera() != nullptr)
+			{
+				PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera()->HandleKeyboardPress(CameraMovement::Right);
+			}
+		}
+	}
+	// Q键
+	else if (wParam == 0x51)
+	{
+		if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager() != nullptr)
+		{
+			if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera() != nullptr)
+			{
+				PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera()->HandleKeyboardPress(CameraMovement::Up);
+			}	
+		}
+	}
+	// E键
+	else if (wParam == 0x45)
+	{
+		if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager() != nullptr)
+		{
+			if (PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera() != nullptr)
+			{
+				PancakeEngine::PancakeEngineScene::GetSingleton()->GetCameraManager()->GetMainCamera()->HandleKeyboardPress(CameraMovement::Down);
+			}	
+		}
+	}
 }
 
 bool PancakeEngineOpenGLRenderWindow::InitOpenGLContext(HWND hWnd, bool isUseMsaa)

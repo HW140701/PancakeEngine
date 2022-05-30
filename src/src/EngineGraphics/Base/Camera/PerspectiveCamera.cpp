@@ -3,12 +3,22 @@
 namespace PancakeEngine
 {
 	PerspectiveCamera::PerspectiveCamera()
-		:m_FovAngle(60.0),
+		:m_FovAngle(45.0),
 		m_Aspect(1.0),
 		m_Near(1.0),
 		m_Far(1000.0)
 	{
 
+	}
+	PerspectiveCamera::PerspectiveCamera(const glm::vec3& camera_position)
+		:m_FovAngle(45.0),
+		m_Aspect(1.0),
+		m_Near(1.0),
+		m_Far(1000.0)
+	{
+		m_CameraPosition = camera_position;
+
+		UpdateCamera();
 	}
 	PerspectiveCamera::PerspectiveCamera(
 		const glm::vec3& camera_position, 
@@ -111,6 +121,13 @@ namespace PancakeEngine
 		default:
 			break;
 		}
+	}
+	void PerspectiveCamera::SetCameraViewSize(int view_width, int view_height)
+	{
+		m_CameraViewWidth = view_width;
+		m_CameraViewHeight = view_height;
+
+		m_Aspect = static_cast<float>(view_width) / static_cast<float>(view_height);
 	}
 	glm::mat4 PerspectiveCamera::GetProjectMatrix()
 	{

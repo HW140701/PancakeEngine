@@ -18,9 +18,4 @@ namespace PancakeEngine
     Camera::~Camera()
     {
     }
-    void Camera::SetCameraViewSize(int view_width, int view_height)
-    {
-        m_CameraViewWidth = view_width;
-        m_CameraViewHeight = view_height;
-    }
 }

@@ -3,6 +3,7 @@
 
 #include "EngineUtils/PancakeEngineProjectHeader.h"
 #include "EngineGraphics/Manager/ShaderManager.h"
+#include "EngineGraphics/Manager/CameraManager.h"
 #include "EngineGraphics/Base/Camera/Camera.h"
 
 
@@ -23,16 +24,23 @@ namespace PancakeEngine
 
 		void Resize(int width, int height);
 
+		
+		std::shared_ptr<CameraManager> GetCameraManager();
+
 	private:
 		void InitScene();
 		void UnInitScene();
 
 
 		void CreateManager();
+		bool CreateCamera();
 
 	private:
+		int m_SceneWidth;
+		int m_SceneHeight;
+
 		std::shared_ptr<ShaderManager> m_pShaderManager;
-		std::shared_ptr<Camera> m_pCamera;
+		std::shared_ptr<CameraManager> m_pCameraManager;
 	};
 }
 

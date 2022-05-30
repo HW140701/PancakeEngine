@@ -14,11 +14,13 @@ namespace PancakeEngine
 		virtual~OrthographicCamera();
 
 	public:
+		virtual void SetCameraViewSize(int view_width, int view_height);
+		virtual glm::mat4 GetProjectMatrix();
+		virtual glm::mat4 GetViewMatrix();
+
 		virtual void HandleMouseMovement(float deltaX, float deltaY);
 		virtual void HandleMouseScroll(float delta);
 		virtual void HandleKeyboardPress(CameraMovement direction);
-		virtual glm::mat4 GetProjectMatrix();
-		virtual glm::mat4 GetViewMatrix();
 
 		void SetOrthographic(float left, float right, float bottom, float top, float near_plane, float far_plane);
 
