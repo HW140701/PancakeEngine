@@ -23,14 +23,8 @@
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineScene.cpp">
       <Filter>EngineGraphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\EngineGraphics\Base\Shader.cpp">
-      <Filter>EngineGraphics\Base</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\EngineGraphics\Manager\ShaderManager.cpp">
       <Filter>EngineGraphics\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\EngineGraphics\Base\Camera.cpp">
-      <Filter>EngineGraphics\Base</Filter>
     </ClCompile>
     <ClCompile Include="..\src\EngineGraphics\Manager\CameraManager.cpp">
       <Filter>EngineGraphics\Manager</Filter>
@@ -40,6 +34,18 @@
     </ClCompile>
     <ClCompile Include="..\src\EngineGraphics\Manager\Manager.cpp">
       <Filter>EngineGraphics\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Base\Camera\Camera.cpp">
+      <Filter>EngineGraphics\Base\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Base\Camera\OrthographicCamera.cpp">
+      <Filter>EngineGraphics\Base\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Base\Camera\PerspectiveCamera.cpp">
+      <Filter>EngineGraphics\Base\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\Base\Shader\Shader.cpp">
+      <Filter>EngineGraphics\Base\Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +79,12 @@
     <Filter Include="EngineGraphics\Pipeline">
       <UniqueIdentifier>{f5b26a41-2591-49e0-bc90-25228f213c6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EngineGraphics\Base\Camera">
+      <UniqueIdentifier>{672c7258-1ace-44e4-9e90-ca5f427cf7ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineGraphics\Base\Shader">
+      <UniqueIdentifier>{b8a54bcf-63ba-46e7-81ae-1f5d7d854dcb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\EngineUI\MainWindow.h">
@@ -102,14 +114,8 @@
     <ClInclude Include="..\src\EngineGraphics\PancakeEngineScene.h">
       <Filter>EngineGraphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\EngineGraphics\Base\Shader.h">
-      <Filter>EngineGraphics\Base</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\EngineGraphics\Manager\ShaderManager.h">
       <Filter>EngineGraphics\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\EngineGraphics\Base\Camera.h">
-      <Filter>EngineGraphics\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\EngineGraphics\Manager\CameraManager.h">
       <Filter>EngineGraphics\Manager</Filter>
@@ -119,6 +125,24 @@
     </ClInclude>
     <ClInclude Include="..\src\EngineGraphics\Manager\Manager.h">
       <Filter>EngineGraphics\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\DataStructure.h">
+      <Filter>EngineGraphics\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera\Camera.h">
+      <Filter>EngineGraphics\Base\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera\CameraInterface.h">
+      <Filter>EngineGraphics\Base\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera\OrthographicCamera.h">
+      <Filter>EngineGraphics\Base\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera\PerspectiveCamera.h">
+      <Filter>EngineGraphics\Base\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\Base\Shader\Shader.h">
+      <Filter>EngineGraphics\Base\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

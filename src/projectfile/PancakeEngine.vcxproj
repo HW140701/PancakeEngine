@@ -159,9 +159,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\EngineGraphics\Base\Camera.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Base\Camera\Camera.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Base\Camera\OrthographicCamera.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Base\Camera\PerspectiveCamera.cpp" />
     <ClCompile Include="..\src\EngineGraphics\Base\Object.cpp" />
-    <ClCompile Include="..\src\EngineGraphics\Base\Shader.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\Base\Shader\Shader.cpp" />
     <ClCompile Include="..\src\EngineGraphics\Manager\CameraManager.cpp" />
     <ClCompile Include="..\src\EngineGraphics\Manager\Manager.cpp" />
     <ClCompile Include="..\src\EngineGraphics\Manager\ShaderManager.cpp" />
@@ -175,9 +177,13 @@
     <ClCompile Include="..\third\glad\src\glad_wgl.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\EngineGraphics\Base\Camera.h" />
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera\Camera.h" />
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera\CameraInterface.h" />
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera\OrthographicCamera.h" />
+    <ClInclude Include="..\src\EngineGraphics\Base\Camera\PerspectiveCamera.h" />
+    <ClInclude Include="..\src\EngineGraphics\Base\DataStructure.h" />
     <ClInclude Include="..\src\EngineGraphics\Base\Object.h" />
-    <ClInclude Include="..\src\EngineGraphics\Base\Shader.h" />
+    <ClInclude Include="..\src\EngineGraphics\Base\Shader\Shader.h" />
     <ClInclude Include="..\src\EngineGraphics\Manager\CameraManager.h" />
     <ClInclude Include="..\src\EngineGraphics\Manager\Manager.h" />
     <ClInclude Include="..\src\EngineGraphics\Manager\ShaderManager.h" />
