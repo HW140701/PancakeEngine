@@ -3,6 +3,8 @@
 
 #include "EngineUtils/PancakeEngineProjectHeader.h"
 #include "EngineGraphics/Manager/ShaderManager.h"
+#include "EngineGraphics/Base/Camera/Camera.h"
+
 
 namespace PancakeEngine
 {
@@ -25,10 +27,12 @@ namespace PancakeEngine
 		void InitScene();
 		void UnInitScene();
 
+
 		void CreateManager();
 
 	private:
 		std::shared_ptr<ShaderManager> m_pShaderManager;
+		std::shared_ptr<Camera> m_pCamera;
 	};
 }
 

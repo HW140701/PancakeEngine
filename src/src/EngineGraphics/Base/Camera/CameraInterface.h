@@ -8,6 +8,7 @@ namespace PancakeEngine
 	class CameraInterface
 	{
 	public:
+		virtual void SetCameraViewSize(int view_width,int view_height) = 0;
 		virtual glm::mat4 GetProjectMatrix() = 0;
 		virtual glm::mat4 GetViewMatrix() = 0;
 	};

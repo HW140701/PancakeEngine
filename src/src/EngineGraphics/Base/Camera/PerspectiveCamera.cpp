@@ -25,6 +25,8 @@ namespace PancakeEngine
 		m_WorldUpVector = world_up;
 		m_Yaw = camera_yaw;
 		m_Pitch = camera_pitch;
+
+		UpdateCamera();
 	}
 	PerspectiveCamera::PerspectiveCamera(
 		const glm::vec3& camera_position,
@@ -46,7 +48,7 @@ namespace PancakeEngine
 		m_Yaw = camera_yaw;
 		m_Pitch = camera_pitch;
 
-		UpdateCameraVectors();
+		UpdateCamera();
 	}
 	PerspectiveCamera::~PerspectiveCamera()
 	{
@@ -74,9 +76,41 @@ namespace PancakeEngine
 	}
 	void PerspectiveCamera::HandleMouseScroll(float delta)
 	{
+		m_CameraZoom -= (float)delta;
+		if (m_CameraZoom < 1.0f)
+			m_CameraZoom = 1.0f;
+		if (m_CameraZoom > 45.0f)
+			m_CameraZoom = 45.0f;
+
+		m_FovAngle = m_CameraZoom;
+
+		m_ProjectMatrix = glm::perspective(glm::radians(m_FovAngle), m_Aspect, m_Near, m_Far);
 	}
-	void PerspectiveCamera::HandleKeyboardPress(float delta)
+	void PerspectiveCamera::HandleKeyboardPress(CameraMovement direction)
 	{
+		switch (direction)
+		{
+		case CameraMovement::Forward:
+			m_CameraPosition += m_CameraFrontVector * m_MovementSpeed;
+			break;
+		case CameraMovement::Backward:
+			m_CameraPosition -= m_CameraFrontVector * m_MovementSpeed;
+			break;
+		case CameraMovement::Left:
+			m_CameraPosition -= m_CameraRightVector * m_MovementSpeed;
+			break;
+		case CameraMovement::Right:
+			m_CameraPosition += m_CameraRightVector * m_MovementSpeed;
+			break;
+		case CameraMovement::Up:
+			m_CameraPosition += m_CameraUpVector * m_MovementSpeed;
+			break;
+		case CameraMovement::Down:
+			m_CameraPosition -= m_CameraUpVector * m_MovementSpeed;
+			break;
+		default:
+			break;
+		}
 	}
 	glm::mat4 PerspectiveCamera::GetProjectMatrix()
 	{
@@ -97,7 +131,7 @@ namespace PancakeEngine
 
 		m_ProjectMatrix = glm::perspective(glm::radians(fov_angle), aspect, near_plane, far_palne);
 	}
-	void PerspectiveCamera::UpdateCameraVectors()
+	void PerspectiveCamera::UpdateCamera()
 	{
 		// 计算相机向前向量
 		glm::vec3 front;

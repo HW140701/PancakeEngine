@@ -1,12 +1,12 @@
 #ifndef ENGINE_GRAPHICS_BASE_ORTHOGRAPHIC_CAMERA_H_
 #define ENGINE_GRAPHICS_BASE_ORTHOGRAPHIC_CAMERA_H_
 
-#include "CameraInterface.h"
-#include "Object.h"
+#include "Camera.h"
+#include "EngineGraphics/Base/Object.h"
 
 namespace PancakeEngine
 {
-	class OrthographicCamera : public Object, CameraInterface
+	class OrthographicCamera : public Camera
 	{
 	public:
 		OrthographicCamera();
@@ -16,7 +16,7 @@ namespace PancakeEngine
 	public:
 		virtual void HandleMouseMovement(float deltaX, float deltaY);
 		virtual void HandleMouseScroll(float delta);
-		virtual void HandleKeyboardPress(float delta);
+		virtual void HandleKeyboardPress(CameraMovement direction);
 		virtual glm::mat4 GetProjectMatrix();
 		virtual glm::mat4 GetViewMatrix();
 

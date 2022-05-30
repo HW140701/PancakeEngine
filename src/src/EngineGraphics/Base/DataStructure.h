@@ -13,4 +13,15 @@ static const float CameraSensitivity = 0.1f;
 static const float CameraSpeed = 2.5f;
 static const float CameraZoom = 45.0f;
 
+
+// 相机移动类型
+enum CameraMovement {
+	Forward,
+	Backward,
+	Left,
+	Right,
+	Up,
+	Down
+};
+
 #endif // !ENGINE_GRAPHICS_BASE_DATA_STRUCTURE_H_

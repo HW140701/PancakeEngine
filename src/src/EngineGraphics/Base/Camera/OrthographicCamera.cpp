@@ -23,7 +23,7 @@ namespace PancakeEngine
 	void OrthographicCamera::HandleMouseScroll(float delta)
 	{
 	}
-	void OrthographicCamera::HandleKeyboardPress(float delta)
+	void OrthographicCamera::HandleKeyboardPress(CameraMovement direction)
 	{
 	}
 	glm::mat4 OrthographicCamera::GetProjectMatrix()

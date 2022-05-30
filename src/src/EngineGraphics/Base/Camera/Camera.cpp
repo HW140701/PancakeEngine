@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "DataStructure.h"
+#include "EngineGraphics/Base/DataStructure.h"
 
 namespace PancakeEngine
 {
@@ -15,4 +15,12 @@ namespace PancakeEngine
         m_ViewMatrix(glm::mat4(1.0))
 	{
 	}
+    Camera::~Camera()
+    {
+    }
+    void Camera::SetCameraViewSize(int view_width, int view_height)
+    {
+        m_CameraViewWidth = view_width;
+        m_CameraViewHeight = view_height;
+    }
 }

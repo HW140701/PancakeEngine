@@ -4,7 +4,7 @@
 #include <string>
 
 
-#include "EngineGraphics/Base/Shader.h"
+#include "EngineGraphics/Base/Shader/Shader.h"
 #include "EngineGraphics/Base/Object.h"
 
 namespace PancakeEngine
