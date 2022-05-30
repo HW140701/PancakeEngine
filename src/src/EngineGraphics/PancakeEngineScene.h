@@ -12,10 +12,20 @@ namespace PancakeEngine
 		PancakeEngineScene();
 		virtual~PancakeEngineScene();
 
+		static std::shared_ptr<PancakeEngineScene> GetSingleton();
+
 	public:
 		void BeforeRender();
 		void Render();
 		void AfterRender();
+
+		void Resize(int width, int height);
+
+	private:
+		void InitScene();
+		void UnInitScene();
+
+		void CreateManager();
 
 	private:
 		std::shared_ptr<ShaderManager> m_pShaderManager;

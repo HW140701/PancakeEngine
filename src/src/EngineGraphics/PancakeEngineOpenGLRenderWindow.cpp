@@ -2,13 +2,8 @@
 #include "EngineUI/MainWindow.h"
 
 PancakeEngineOpenGLRenderWindow::PancakeEngineOpenGLRenderWindow()
-	:m_pPancakeEngineScene(nullptr)
 {
-	m_pPancakeEngineScene = std::make_unique<PancakeEngine::PancakeEngineScene>();
-	if (m_pPancakeEngineScene == nullptr)
-	{
-		LOG(ERROR) << "PancakeEngineOpenGLRender创建失败" << std::endl;
-	}
+
 }
 
 PancakeEngineOpenGLRenderWindow::~PancakeEngineOpenGLRenderWindow()
@@ -58,59 +53,63 @@ LRESULT PancakeEngineOpenGLRenderWindow::OpenGLWndDisplayProc(HWND hWnd, UINT me
 
 	case WM_LBUTTONDOWN:
 	{
-
+		OnLeftButtonDown(hWnd, wParam, lParam);
 
 		break;
 	}
 
 	case WM_LBUTTONUP:
 	{
-
+		OnLeftButtonUp(hWnd, wParam, lParam);
 
 		break;
 	}
 
 	case WM_MOUSEMOVE:
 	{
-
+		OnMouseMove(hWnd, wParam, lParam);
 
 		break;
 	}
 
 	case WM_RBUTTONDOWN:
 	{
-
+		OnRightButtonDown(hWnd, wParam, lParam);
 
 		break;
 	}
 
 	case WM_RBUTTONUP:
 	{
-
+		OnRightButtonUp(hWnd, wParam, lParam);
 
 		break;
 	}
 
 	case WM_MBUTTONDOWN:
 	{
+		OnMiddleButtonDown(hWnd, wParam, lParam);
 
 		break;
 	}
 
 	case WM_MBUTTONUP:
 	{
+		OnMiddleButtonUp(hWnd, wParam, lParam);
 
 		break;
 	}
 
 	case WM_MOUSEWHEEL:
 	{
+		OnMouseWheel(hWnd, wParam, lParam);
 
 		break;
 	}
 
 	case WM_KEYDOWN:
 	{
+		OnKeyDown(hWnd, wParam, lParam);
 
 		break;
 	}
@@ -178,6 +177,67 @@ void PancakeEngineOpenGLRenderWindow::OnPaint(HWND hWnd, WPARAM wParam, LPARAM l
 }
 
 void PancakeEngineOpenGLRenderWindow::OnSize(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+	// lParam中低位为宽度，高位为高度
+	int window_width = LOWORD(lParam);
+	int window_height = HIWORD(lParam);
+
+	PancakeEngine::PancakeEngineScene::GetSingleton()->Resize(window_width,window_height);
+}
+
+void PancakeEngineOpenGLRenderWindow::OnLeftButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+	int mouse_x = LOWORD(lParam);
+	int mouse_y = HIWORD(lParam);
+
+}
+
+
+void PancakeEngineOpenGLRenderWindow::OnLeftButtonUp(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+	int mouse_x = LOWORD(lParam);
+	int mouse_y = HIWORD(lParam);
+
+}
+
+void PancakeEngineOpenGLRenderWindow::OnMouseMove(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+	int mouse_x = LOWORD(lParam);
+	int mouse_y = HIWORD(lParam);
+}
+
+void PancakeEngineOpenGLRenderWindow::OnRightButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+	int mouse_x = LOWORD(lParam);
+	int mouse_y = HIWORD(lParam);
+
+}
+
+void PancakeEngineOpenGLRenderWindow::OnRightButtonUp(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+}
+
+void PancakeEngineOpenGLRenderWindow::OnMiddleButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+}
+
+void PancakeEngineOpenGLRenderWindow::OnMiddleButtonUp(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+}
+
+void PancakeEngineOpenGLRenderWindow::OnMouseWheel(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+	//滑动鼠标的滚轮时的消息就是 WM_MOUSEWHEEL
+	//主要要看的是(short)HIWORD(wParam)的值
+	//> 0时 滚轮滚动方向向自己
+	//< 0时 滚轮滚动方向向屏幕
+
+	short wheelDistance = (short)HIWORD(wParam);
+
+
+}
+
+void PancakeEngineOpenGLRenderWindow::OnKeyDown(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
 }
 
@@ -442,14 +502,11 @@ void PancakeEngineOpenGLRenderWindow::UpdateOpenGLRender(HWND hWnd)
 
 	if (m_HGLRC)
 	{
-		if (m_pPancakeEngineScene != nullptr)
-		{
-			m_pPancakeEngineScene->BeforeRender();
+		PancakeEngine::PancakeEngineScene::GetSingleton()->BeforeRender();
 
-			m_pPancakeEngineScene->Render();
+		PancakeEngine::PancakeEngineScene::GetSingleton()->Render();
 
-			m_pPancakeEngineScene->AfterRender();
-		}
+		PancakeEngine::PancakeEngineScene::GetSingleton()->AfterRender();
 
 		SwapBuffers(hDC);
 	}

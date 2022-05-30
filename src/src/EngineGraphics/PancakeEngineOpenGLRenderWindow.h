@@ -21,6 +21,15 @@ private:
 	void OnDestory(HWND hWnd, WPARAM wParam, LPARAM lParam);
 	void OnPaint(HWND hWnd, WPARAM wParam, LPARAM lParam);
 	void OnSize(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnLeftButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnLeftButtonUp(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnMouseMove(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnRightButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnRightButtonUp(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnMiddleButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnMiddleButtonUp(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnMouseWheel(HWND hWnd, WPARAM wParam, LPARAM lParam);
+	void OnKeyDown(HWND hWnd, WPARAM wParam, LPARAM lParam);
 
 	bool InitOpenGLContext(HWND hWnd,bool isUseMsaa = true);
 	void UnInitOpenGLContext();
@@ -31,7 +40,6 @@ private:
 	HDC m_HDC;
 	HGLRC m_HGLRC;
 
-	std::unique_ptr<PancakeEngine::PancakeEngineScene> m_pPancakeEngineScene;
 };
 
 #endif // !ENGINE_GRAPGICS_PANCAKE_ENGINE_OPENGL_RENDER_WINDOW_H_

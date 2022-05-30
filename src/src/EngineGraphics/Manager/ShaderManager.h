@@ -9,7 +9,7 @@
 
 namespace PancakeEngine
 {
-	class ShaderManager
+	class ShaderManager : public Object
 	{
 	public:
 		ShaderManager();
