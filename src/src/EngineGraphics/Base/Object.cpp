@@ -12,4 +12,11 @@ namespace PancakeEngine
 	{
 		m_pScene = p_scene;
 	}
+	std::shared_ptr<PancakeEngineScene> Object::GetScene()
+	{
+		if (m_pScene.expired())
+			return nullptr;
+		
+		return m_pScene.lock();
+	}
 }

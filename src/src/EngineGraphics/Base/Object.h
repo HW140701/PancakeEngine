@@ -14,6 +14,7 @@ namespace PancakeEngine
 
 	public:
 		virtual void SetScene(std::shared_ptr<PancakeEngineScene> p_scene);
+		virtual std::shared_ptr<PancakeEngineScene> GetScene();
 
 	private:
 		std::weak_ptr<PancakeEngineScene> m_pScene;
