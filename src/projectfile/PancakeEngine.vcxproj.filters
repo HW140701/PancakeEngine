@@ -47,6 +47,9 @@
     <ClCompile Include="..\src\EngineGraphics\Base\Shader\Shader.cpp">
       <Filter>EngineGraphics\Base\Shader</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\EngineGraphics\RenderPipeline\RenderPipeline.cpp">
+      <Filter>EngineGraphics\RenderPipeline</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="EngineUI">
@@ -76,14 +79,14 @@
     <Filter Include="EngineGraphics\Manager">
       <UniqueIdentifier>{f4f677b9-63f6-4b21-8baf-0727e8400c6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EngineGraphics\Pipeline">
-      <UniqueIdentifier>{f5b26a41-2591-49e0-bc90-25228f213c6b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="EngineGraphics\Base\Camera">
       <UniqueIdentifier>{672c7258-1ace-44e4-9e90-ca5f427cf7ab}</UniqueIdentifier>
     </Filter>
     <Filter Include="EngineGraphics\Base\Shader">
       <UniqueIdentifier>{b8a54bcf-63ba-46e7-81ae-1f5d7d854dcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineGraphics\RenderPipeline">
+      <UniqueIdentifier>{f5b26a41-2591-49e0-bc90-25228f213c6b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +146,12 @@
     </ClInclude>
     <ClInclude Include="..\src\EngineGraphics\Base\Shader\Shader.h">
       <Filter>EngineGraphics\Base\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\RenderPipeline\RenderPipelineInterface.h">
+      <Filter>EngineGraphics\RenderPipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EngineGraphics\RenderPipeline\RenderPipeline.h">
+      <Filter>EngineGraphics\RenderPipeline</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

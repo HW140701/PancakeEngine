@@ -10,9 +10,7 @@ namespace PancakeEngine
 		virtual~RenderPipelineInterface() = default;
 
 	public:
-#ifdef _WIN32
 
-#endif // DEBUG
 
 	};
 }

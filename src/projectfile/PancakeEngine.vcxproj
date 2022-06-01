@@ -169,6 +169,7 @@
     <ClCompile Include="..\src\EngineGraphics\Manager\ShaderManager.cpp" />
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.cpp" />
     <ClCompile Include="..\src\EngineGraphics\PancakeEngineScene.cpp" />
+    <ClCompile Include="..\src\EngineGraphics\RenderPipeline\RenderPipeline.cpp" />
     <ClCompile Include="..\src\EngineUI\MainWindow.cpp" />
     <ClCompile Include="..\src\EngineUtils\PancakeEnginePathUtils.cpp" />
     <ClCompile Include="..\src\WinMain.cpp" />
@@ -189,6 +190,8 @@
     <ClInclude Include="..\src\EngineGraphics\Manager\ShaderManager.h" />
     <ClInclude Include="..\src\EngineGraphics\PancakeEngineOpenGLRenderWindow.h" />
     <ClInclude Include="..\src\EngineGraphics\PancakeEngineScene.h" />
+    <ClInclude Include="..\src\EngineGraphics\RenderPipeline\RenderPipeline.h" />
+    <ClInclude Include="..\src\EngineGraphics\RenderPipeline\RenderPipelineInterface.h" />
     <ClInclude Include="..\src\EngineUI\CWndUI.h" />
     <ClInclude Include="..\src\EngineUI\MainWindow.h" />
     <ClInclude Include="..\src\EngineUI\UIControlName.h" />
